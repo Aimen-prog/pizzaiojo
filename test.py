@@ -24,14 +24,17 @@ print(total_prices_per_order.describe())
 print()
 plt.figure(figsize=(10, 6))
 sns.histplot(total_prices_per_order, bins=30, kde=True, color='skyblue')
-plt.title('Distribution of Total Prices for Orders')
-plt.xlabel('Total Price')
-plt.ylabel('Frequency')
-plt.show()
+plt.title('Distribution des prix totaux pour les commandes')
+plt.xlabel('Prix total')
+plt.ylabel('Fréquence')
+#plt.show()
 
 #Analyse du chiffre d’affaires en fonction du temps :
 
 #a)
-
+df['order_date'] = pd.to_datetime(df['order_date'])
+chiffre_affaires_quotidien = df.groupby(df['order_date'].dt.date)['total_price'].sum()
+print(f"Le chiffre d'affaires quotidien :\n {chiffre_affaires_quotidien}")
 
 #b)
+print()
