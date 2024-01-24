@@ -38,3 +38,26 @@ print(f"Le chiffre d'affaires quotidien :\n {chiffre_affaires_quotidien}")
 
 #b)
 print()
+print("Y a-t-il une corrélation entre l'heure de la journée et le total de la commande ?")
+
+df['hour_of_day'] = df['order_time'].apply(lambda x: x.hour if pd.notnull(x) else x)
+
+# Créer un nuage de points pour visualiser la corrélation
+plt.figure(figsize=(12, 6))
+sns.scatterplot(x='hour_of_day', y='total_price', data=df)
+plt.title("Corrélation entre l'heure de la journée et le total de la commande")
+plt.xlabel("Heure de la journée")
+plt.ylabel("Total de la commande")
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
