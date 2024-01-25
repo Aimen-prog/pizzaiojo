@@ -32,6 +32,7 @@ plt.ylabel('Fréquence')
 #Analyse du chiffre d’affaires en fonction du temps :
 
 #a)
+
 df['order_date'] = pd.to_datetime(df['order_date'])
 chiffre_affaires_quotidien = df.groupby(df['order_date'].dt.date)['total_price'].sum()
 print(f"Le chiffre d'affaires quotidien :\n {chiffre_affaires_quotidien}")
@@ -51,9 +52,8 @@ plt.show()
 
 ############################
 
-# Define time periods (you may adjust this based on your specific needs)
-bins = [11, 18, 21]
-labels = ['Matin/Aprem', 'Nuit']
+bins = [9, 12, 13, 18, 24]
+labels = ['Matin', "Midi", "Apres-Midi", 'Soir']
 df['time_period'] = pd.cut(df['hour_of_day'], bins=bins, labels=labels, right=False)
 
 # Visualize the data
@@ -71,20 +71,11 @@ print("ANOVA Test:")
 print("F-statistic:", f_statistic)
 print("p-value:", p_value)
 
-# Check for statistical significance (common alpha level is 0.05)
+# Check for statistical significance
 alpha = 0.05
 if p_value < alpha:
     print("There is a significant difference in total prices across time periods.")
 else:
     print("There is no significant difference in total prices across time periods.")
-
-
-
-
-
-
-
-
-
 
 
