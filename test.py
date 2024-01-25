@@ -49,9 +49,6 @@ plt.xlabel("Heure de la journée")
 plt.ylabel("Total de la commande")
 plt.show()
 
-
-############################
-
 bins = [9, 12, 13, 18, 24]
 labels = ['Matin', "Midi", "Apres-Midi", 'Soir']
 df['time_period'] = pd.cut(df['hour_of_day'], bins=bins, labels=labels, right=False)
